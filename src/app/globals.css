@@ -3,24 +3,130 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --primary: #b63e41;
+  --primary-grey: #262626;
+  --secondary-text: #666666;
+  --eb-strokes: #ebebeb;
+  --unselected-menu-item: #b6b6b6;
+  --red-type: #f84043;
+  --skeleton: #f4f4f4;
+  --footer-text: #cccccc;
+
+  --primary-blue: #30b0c7;
+  --authBg: #fafafa;
+  --primary-green: #34c759;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-primary: var(--primary);
+  --color-primary-grey: var(--primary-grey);
+  --color-secondary-text: var(--secondary-text);
+  --color-eb-strokes: var(--eb-strokes);
+  --color-unmenu: var(--unselected-menu-item);
+  --color-red-type: var(--red-type);
+  --color-skeleton: var(--skeleton);
+  --color-authBg: var(--authBg);
+  --color-footer-text: var(--footer-text);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary-blue: var(--primary-blue);
+  --color-primary-green: var(--primary-green);
+
+  --font-inter: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --font-manrope: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --breakpoint-sm: 510px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 77.5rem;
+  --breakpoint-2xl: 92.5rem;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@layer utilities {
+  .animate-shimmer {
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.swal2-container.swal2-backdrop-show {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+  overflow: hidden !important;
+}
+
+/* ── react-international-phone ───────────────────────────────────────── */
+.react-international-phone-input-container {
+  width: 100% !important;
+  display: flex !important;
+  gap: 12px !important;
+}
+
+.react-international-phone-input-container
+  .react-international-phone-country-selector-button {
+  width: 80px !important;
+  height: 40px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--eb-strokes) !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.react-international-phone-input-container
+  .react-international-phone-country-selector-button__dropdown-arrow {
+  display: none !important;
+}
+
+.react-international-phone-input-container
+  .react-international-phone-country-selector-button::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23262626' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 4px;
+}
+
+.react-international-phone-input-container .react-international-phone-input {
+  flex: 1 !important;
+  min-width: 0 !important;
+  height: 40px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--eb-strokes) !important;
 }
