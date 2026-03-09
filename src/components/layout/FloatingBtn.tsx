@@ -18,7 +18,7 @@ const FloatingBtn = () => {
           alt="Floating Button"
           width={70}
           height={70}
-          className="md:size-16 size-12"
+          className="size-16 "
         />
       </div>
 
