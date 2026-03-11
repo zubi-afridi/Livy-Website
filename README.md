@@ -1,9 +1,9 @@
 # 🏠 LivyStay - Premium Property Booking Made Simple
 
 [![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg?style=for-the-badge&logo=vercel)](https://livystay-website.vercel.app/)
-[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
 ![LivyStay Banner](./public/images/readme-img.png)
 
@@ -29,7 +29,7 @@ LivyStay is a modern, responsive property booking platform built for a seamless 
 - **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
 - **State Management**: [TanStack Query (React Query)](https://tanstack.com/query/latest)
 - **Forms & Validation**: [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
-- **Animations**: [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/) & [GSAP](https://gsap.com/)
+- **Animations**: [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/)
 - **Icons**: [Lucide React](https://lucide.dev/) & [Remix Icon](https://remixicon.com/)
 - **HTTP Client**: [Axios](https://axios-http.com/)
 
@@ -47,7 +47,7 @@ LivyStay is a modern, responsive property booking platform built for a seamless 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/livystay.git
+   git clone https://github.com/zubi-afridi/Livy-Website.git
    cd livy-app
    ```
 
@@ -97,7 +97,7 @@ src/
 
 ## 🌐 Live Link
 
-Check out the live application here: **[LivyStay Website](https://livystay-website.vercel.app/)**
+Check out the live application here: **[Live Demo](https://livystay-website.vercel.app/)**
 
 ---
 
