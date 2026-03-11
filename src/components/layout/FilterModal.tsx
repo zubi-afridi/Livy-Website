@@ -107,9 +107,7 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
           </button>
         </div>
 
-        {/* Content */}
         <div className="px-4 sm:px-10 pb-4 sm:pb-8 space-y-6 sm:space-y-12">
-          {/* Price Range */}
           <section>
             <h3 className="text-xl font-bold text-primary-grey mb-10 font-manrope">
               Price Range
@@ -130,10 +128,7 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
             </div>
 
             <div className="relative w-full h-8 flex items-center mb-6">
-              {/* Slider Track */}
               <div className="absolute w-full h-0.75 bg-gray-100 rounded-full" />
-
-              {/* Slider Active Track */}
               <div
                 className="absolute h-0.75 bg-primary rounded-full transition-all"
                 style={{
@@ -141,8 +136,6 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
                   width: `${((maxPrice - minPrice) / (max - min)) * 100}%`,
                 }}
               />
-
-              {/* Range Inputs */}
               <input
                 type="range"
                 min={min}
@@ -171,8 +164,6 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
           </section>
 
           <hr className="border-t border-eb-strokes" />
-
-          {/* Bedrooms and Bathrooms */}
           <section>
             <h3 className="text-xl font-bold text-primary-grey mb-8 font-manrope">
               Bedrooms and bathrooms
@@ -213,8 +204,6 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
           </section>
 
           <hr className="border-t border-eb-strokes" />
-
-          {/* Amenities */}
           <section>
             <h3 className="text-xl font-bold text-primary-grey mb-8 font-manrope">
               Amenities
@@ -262,8 +251,6 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
           </section>
 
           <hr className="border-t border-eb-strokes" />
-
-          {/* Property Type */}
           <section>
             <h3 className="text-xl font-bold text-primary-grey mb-8 font-manrope">
               Property Type
@@ -310,8 +297,6 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
             </div>
           </section>
         </div>
-
-        {/* Footer */}
         <div className="sticky bottom-0 z-10 flex items-center justify-between border-t border-eb-strokes bg-white px-4 py-3 sm:px-10 sm:py-6">
           <button
             onClick={handleClearAll}
@@ -330,5 +315,4 @@ const FilterModal = ({ isOpen, onClose }: FilterModalProps) => {
     </div>
   );
 };
-
 export default FilterModal;

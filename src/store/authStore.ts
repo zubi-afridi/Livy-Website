@@ -1,11 +1,9 @@
-// ─── Keys ────────────────────────────────────────────────────────────────────
 const USERS_KEY = "livy_users";
 const CURRENT_USER_KEY = "livy_current_user";
 const TOKEN_KEY = "livy_token";
 const IS_LOGGED_IN_KEY = "livy_isLoggedIn";
 const OTP_FLOW_KEY = "livy_otp_flow";
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 export interface StoredUser {
   id: string;
   fullName: string;
@@ -21,7 +19,6 @@ export interface OtpFlowContext {
   email: string;
 }
 
-// ─── User Storage ─────────────────────────────────────────────────────────────
 export const getAllUsers = (): StoredUser[] => {
   if (typeof window === "undefined") return [];
   try {
@@ -58,7 +55,6 @@ export const updateUserPassword = (
   return true;
 };
 
-// ─── Current Session ──────────────────────────────────────────────────────────
 export const getCurrentUser = (): StoredUser | null => {
   if (typeof window === "undefined") return null;
   try {
@@ -77,7 +73,6 @@ export const removeCurrentUser = (): void => {
   localStorage.removeItem(CURRENT_USER_KEY);
 };
 
-// ─── Token ────────────────────────────────────────────────────────────────────
 export const getToken = (): string | null => {
   if (typeof window === "undefined") return null;
   return localStorage.getItem(TOKEN_KEY);
@@ -91,9 +86,7 @@ export const removeToken = (): void => {
   localStorage.removeItem(TOKEN_KEY);
 };
 
-// ─── Cookie helpers for middleware ────────────────────────────────────────────
 export const setAuthCookie = (token: string): void => {
-  // Set cookie accessible to Next.js middleware (no httpOnly so JS can set it)
   const maxAge = 60 * 60 * 24 * 7; // 7 days
   document.cookie = `livy_token=${token}; path=/; max-age=${maxAge}; SameSite=Lax`;
 };
@@ -102,7 +95,6 @@ export const clearAuthCookie = (): void => {
   document.cookie = "livy_token=; path=/; max-age=0; SameSite=Lax";
 };
 
-// ─── Login State ──────────────────────────────────────────────────────────────
 export const setIsLoggedIn = (value: boolean): void => {
   localStorage.setItem(IS_LOGGED_IN_KEY, value ? "1" : "0");
 };
@@ -112,11 +104,9 @@ export const getIsLoggedIn = (): boolean => {
   return localStorage.getItem(IS_LOGGED_IN_KEY) === "1";
 };
 
-// ─── OTP Flow Context ─────────────────────────────────────────────────────────
 export const setOtpFlowContext = (flow: OtpFlowType, email: string): void => {
   const ctx: OtpFlowContext = { flow, email };
   localStorage.setItem(OTP_FLOW_KEY, JSON.stringify(ctx));
-  // Also set a cookie so middleware can allow access to /verify-otp & /reset-password
   document.cookie = `livy_otp_flow=${flow}; path=/; max-age=600; SameSite=Lax`; // 10 min
 };
 
@@ -135,7 +125,6 @@ export const clearOtpFlowContext = (): void => {
   document.cookie = "livy_otp_flow=; path=/; max-age=0; SameSite=Lax";
 };
 
-// ─── Full Logout ──────────────────────────────────────────────────────────────
 export const clearAllAuthData = (): void => {
   localStorage.removeItem(TOKEN_KEY);
   localStorage.removeItem(CURRENT_USER_KEY);

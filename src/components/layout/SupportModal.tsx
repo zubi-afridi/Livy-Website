@@ -9,7 +9,6 @@ interface SupportModalProps {
 }
 
 const SupportModal = ({ isOpen, onClose }: SupportModalProps) => {
-  // Prevent scroll when modal is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -29,7 +28,6 @@ const SupportModal = ({ isOpen, onClose }: SupportModalProps) => {
         className="relative w-full max-w-112.5 bg-white rounded-3xl md:rounded-4xl shadow-2xl animate-in fade-in zoom-in duration-300 overflow-hidden max-h-[95vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 md:px-8 md:py-6 border-b border-gray-50 shrink-0">
           <h2 className="text-[20px] md:text-[22px] min-[1440px]:text-[24px] font-bold text-primary-grey font-manrope">
             Choose Support Type
@@ -41,10 +39,7 @@ const SupportModal = ({ isOpen, onClose }: SupportModalProps) => {
             <X className="w-5 h-5 md:w-6 md:h-6 text-primary-grey" />
           </button>
         </div>
-
-        {/* Content */}
         <div className="px-6 py-5 md:px-8 md:py-6 space-y-4 md:space-y-6 overflow-y-auto scrollbar-hide">
-          {/* Status section */}
           <div className="space-y-2 md:space-y-4 mb-2 md:mb-4">
             <h3 className="text-[16px] md:text-[17px] min-[1440px]:text-[18px] font-semibold text-primary-grey font-manrope">
               Our team is available to assist you 24/7
@@ -60,10 +55,7 @@ const SupportModal = ({ isOpen, onClose }: SupportModalProps) => {
               </div>
             </div>
           </div>
-
-          {/* Support Cards */}
           <div className="space-y-3 md:space-y-4">
-            {/* General Support */}
             <div className="bg-[#FFF1F1] rounded-2xl md:rounded-3xl p-4 md:p-6 space-y-3 md:space-y-4 border border-transparent hover:border-primary/10 transition-colors">
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="bg-[#B63E41] p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg shadow-primary/20">
@@ -80,8 +72,6 @@ const SupportModal = ({ isOpen, onClose }: SupportModalProps) => {
                 Open WhatsApp
               </button>
             </div>
-
-            {/* Technical Support */}
             <div className="bg-[#FFF1F1] rounded-2xl md:rounded-3xl p-4 md:p-6 space-y-3 md:space-y-4 border border-transparent hover:border-primary/10 transition-colors">
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="bg-[#B63E41] p-2 md:p-3 rounded-lg md:rounded-xl shadow-lg shadow-primary/20">

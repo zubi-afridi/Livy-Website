@@ -7,7 +7,6 @@ interface PropertyHeaderProps {
   liked: boolean;
   onLikeToggle: () => void;
 }
-
 const PropertyHeader: React.FC<PropertyHeaderProps> = ({
   title,
   location,

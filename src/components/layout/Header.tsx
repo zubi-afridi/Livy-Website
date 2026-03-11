@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,13 +33,10 @@ const Header = () => {
     code: "EN",
     icon: "/icons/Americal-flag.svg",
   });
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const langRef = useRef<HTMLLIElement>(null);
   const menuRef = useRef<HTMLLIElement>(null);
   const mobileLangRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const readAuth = () => {
       const v =
@@ -49,16 +45,13 @@ const Header = () => {
           : null;
       setIsLoggedIn(v === "1");
     };
-
     readAuth();
-
     const onStorage = (e: StorageEvent) => {
       if (e.key === "livy_isLoggedIn") {
         setIsLoggedIn(e.newValue === "1");
       }
     };
     window.addEventListener("storage", onStorage);
-
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 

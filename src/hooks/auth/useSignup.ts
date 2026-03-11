@@ -1,5 +1,4 @@
 "use client";
-
 import { useMutation } from "@tanstack/react-query";
 import { signupUser } from "@/lib/axios/authApi";
 import { useRouter } from "next/navigation";
@@ -12,7 +11,6 @@ export const useSignup = () => {
     mutationFn: signupUser,
     onSuccess: () => {
       toast.success("Account created! Please verify your OTP.");
-      // OTP flow context is already set to "signup" inside signupUser()
       router.push("/verify-otp");
     },
     onError: (error: Error) => {

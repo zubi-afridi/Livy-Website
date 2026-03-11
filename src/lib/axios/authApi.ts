@@ -1,11 +1,3 @@
-/**
- * Auth API — LocalStorage Simulation
- *
- * All functions simulate async API calls with a small artificial delay.
- * Errors are thrown as plain Error objects so TanStack Query's onError handler
- * receives them just like real Axios errors (via error.message).
- */
-
 import {
   getAllUsers,
   saveUser,
@@ -29,19 +21,15 @@ import type {
   MessageResponse,
 } from "@/types/auth.types";
 
-/** Artificial network delay (ms) */
 const delay = (ms = 600) =>
   new Promise<void>((resolve) => setTimeout(resolve, ms));
 
-/** Generate a simple unique ID */
 const generateId = () =>
   Math.random().toString(36).substring(2) + Date.now().toString(36);
 
-/** Generate a fake JWT-like token */
 const generateToken = (email: string) =>
   btoa(`${email}:${Date.now()}:livy_demo`);
 
-// ─── Signup ──────────────────────────────────────────────────────────────────
 export const signupUser = async (
   payload: SignupPayload,
 ): Promise<AuthResponse> => {
@@ -64,7 +52,6 @@ export const signupUser = async (
 
   saveUser(newUser);
 
-  // Set OTP flow so verify-otp knows to redirect to /login after verification
   setOtpFlowContext("signup", payload.email);
 
   return {
@@ -79,7 +66,6 @@ export const signupUser = async (
   };
 };
 
-// ─── Login ───────────────────────────────────────────────────────────────────
 export const loginUser = async (
   payload: LoginPayload,
 ): Promise<AuthResponse> => {
@@ -95,7 +81,6 @@ export const loginUser = async (
 
   const token = generateToken(user.email);
 
-  // Persist session
   setToken(token);
   setCurrentUser(user);
   setIsLoggedIn(true);
@@ -113,7 +98,6 @@ export const loginUser = async (
   };
 };
 
-// ─── Forgot Password ─────────────────────────────────────────────────────────
 export const forgotPassword = async (
   payload: ForgotPasswordPayload,
 ): Promise<MessageResponse> => {
@@ -126,7 +110,6 @@ export const forgotPassword = async (
     );
   }
 
-  // Store email so reset-password knows which user to update
   setOtpFlowContext("forgotPassword", payload.email);
 
   return {
@@ -135,22 +118,16 @@ export const forgotPassword = async (
   };
 };
 
-// ─── Verify OTP ──────────────────────────────────────────────────────────────
 export const verifyOtp = async (
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   payload: VerifyOtpPayload,
 ): Promise<MessageResponse> => {
   await delay(400);
-
-  // Accept any 4-digit OTP — no real server validation needed
-  // The Zod schema already ensures the value is exactly 4 digits
   return {
     success: true,
     message: "OTP verified successfully.",
   };
 };
 
-// ─── Reset Password ───────────────────────────────────────────────────────────
 export const resetPassword = async (
   payload: ResetPasswordPayload,
 ): Promise<MessageResponse> => {

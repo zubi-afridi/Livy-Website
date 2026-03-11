@@ -8,7 +8,6 @@ const axiosInstance = axios.create({
   timeout: 15000,
 });
 
-// ─── Request Interceptor ────────────────────────────────────────────────────
 axiosInstance.interceptors.request.use(
   (config) => {
     if (typeof window !== "undefined") {
@@ -22,7 +21,6 @@ axiosInstance.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
-// ─── Response Interceptor ───────────────────────────────────────────────────
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {

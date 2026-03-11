@@ -1,14 +1,10 @@
 "use client";
-
 import Image from "next/image";
 import Container from "../common/Container";
-
 const PropertyGallery = () => {
   return (
     <Container className="mt-8 mb-12">
-      {/* Grid container with responsive height */}
       <div className="grid grid-cols-12 gap-2 sm:gap-3 md:gap-4 h-64 sm:h-100 md:h-125 lg:h-150 relative">
-        {/* Left Column - Large Image (Full width on mobile, 5/12 on sm+) */}
         <div className="col-span-12 sm:col-span-5 relative h-full">
           <Image
             src="/images/bedroom-1.png"
@@ -18,8 +14,6 @@ const PropertyGallery = () => {
             priority
           />
         </div>
-
-        {/* Middle Column - Two Stacked Images (3/12 on sm+) */}
         <div className="hidden sm:flex col-span-3 flex-col gap-3 md:gap-4 h-full">
           <div className="relative flex-1">
             <Image
@@ -38,8 +32,6 @@ const PropertyGallery = () => {
             />
           </div>
         </div>
-
-        {/* Right Column - Tall Image (4/12 on sm+) */}
         <div className="hidden sm:block col-span-4 relative h-full">
           <Image
             src="/images/bedroom-4.png"

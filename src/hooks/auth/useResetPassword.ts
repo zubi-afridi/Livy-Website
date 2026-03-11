@@ -1,5 +1,4 @@
 "use client";
-
 import { useMutation } from "@tanstack/react-query";
 import { resetPassword } from "@/lib/axios/authApi";
 import { useRouter } from "next/navigation";
@@ -14,7 +13,6 @@ export const useResetPassword = () => {
       toast.success(
         "Password reset successfully! Please log in with your new password.",
       );
-      // OTP flow context is cleared inside resetPassword()
       router.push("/login");
     },
     onError: (error: Error) => {

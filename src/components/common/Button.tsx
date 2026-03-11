@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 const Button = ({ to = "/", label = "Login", classname = "" }) => {
   return (
     <Link

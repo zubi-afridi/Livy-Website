@@ -6,11 +6,8 @@ import Twitter from "./../../assets/icons/twitter.svg";
 import Instagram from "./../../assets/icons/instagram.svg";
 import Linkedin from "./../../assets/icons/linkedin.svg";
 import Youtube from "./../../assets/icons/youtube.svg";
-import Footer from "../common/Footer";
-
 const FooterLanding = () => {
   const currentYear = new Date().getFullYear();
-
   return (
     <div className="bg-[#fafafa]">
       <Container>

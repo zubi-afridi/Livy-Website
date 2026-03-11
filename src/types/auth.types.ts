@@ -1,5 +1,3 @@
-// ─── Request Payloads ───────────────────────────────────────────────────────
-
 export interface LoginPayload {
   email: string;
   password: string;
@@ -27,8 +25,6 @@ export interface ResetPasswordPayload {
   confirmPassword: string;
   token?: string;
 }
-
-// ─── Response Types ─────────────────────────────────────────────────────────
 
 export interface AuthUser {
   id: string;

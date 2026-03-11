@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-// ─── Login Schema ─────────────────────────────────────────────────────────────
 export const loginSchema = z.object({
   email: z
     .string()
@@ -15,7 +14,6 @@ export const loginSchema = z.object({
 
 export type LoginFormValues = z.infer<typeof loginSchema>;
 
-// ─── Signup Schema ────────────────────────────────────────────────────────────
 export const signupSchema = z.object({
   fullName: z
     .string()
@@ -40,7 +38,6 @@ export const signupSchema = z.object({
 
 export type SignupFormValues = z.infer<typeof signupSchema>;
 
-// ─── Forgot Password Schema ───────────────────────────────────────────────────
 export const forgotPasswordSchema = z.object({
   email: z
     .string()
@@ -50,7 +47,6 @@ export const forgotPasswordSchema = z.object({
 
 export type ForgotPasswordFormValues = z.infer<typeof forgotPasswordSchema>;
 
-// ─── Verify OTP Schema ────────────────────────────────────────────────────────
 export const verifyOtpSchema = z.object({
   otp: z
     .string()
@@ -60,7 +56,6 @@ export const verifyOtpSchema = z.object({
 
 export type VerifyOtpFormValues = z.infer<typeof verifyOtpSchema>;
 
-// ─── Reset Password Schema ────────────────────────────────────────────────────
 export const resetPasswordSchema = z
   .object({
     newPassword: z
