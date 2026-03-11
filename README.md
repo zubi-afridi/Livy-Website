@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏠 LivyStay - Premium Property Booking Made Simple
 
-## Getting Started
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen.svg?style=for-the-badge&logo=vercel)](https://livystay-website.vercel.app/)
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
-First, run the development server:
+![LivyStay Banner](./public/images/readme-banner.png)
+
+LivyStay is a modern, responsive property booking platform built for a seamless user experience. Whether you're looking for a cozy apartment or a luxury villa, LivyStay connects you with your next destination.
+
+---
+
+## ✨ Features
+
+- 🔍 **Advanced Search**: Find properties based on location, dates, and guest capacity.
+- 🖼️ **Property Gallery**: High-quality visual exploration of properties with responsive grids.
+- 🔐 **Secure Authentication**: Complete auth flow including Signup, Login, and Password recovery.
+- ❤️ **Favorites**: Save your favorite properties for later.
+- 📅 **Booking Management**: Easy-to-use interface for managing your stays and history.
+- 📱 **Fully Responsive**: Optimized for desktop, tablet, and mobile devices.
+- 🎨 **Premium UI/UX**: Smooth animations with AOS and modern design principles.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: [TanStack Query (React Query)](https://tanstack.com/query/latest)
+- **Forms & Validation**: [React Hook Form](https://react-hook-form.com/) & [Zod](https://zod.dev/)
+- **Animations**: [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/) & [GSAP](https://gsap.com/)
+- **Icons**: [Lucide React](https://lucide.dev/) & [Remix Icon](https://remixicon.com/)
+- **HTTP Client**: [Axios](https://axios-http.com/)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm or yarn or pnpm
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/livystay.git
+   cd livy-app
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up Environment Variables**
+   Create a `.env.local` file in the root directory and add your API base URL:
+   ```env
+   NEXT_PUBLIC_API_BASE_URL=https://your-api-endpoint.com/api
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+
+### Build for Production
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+src/
+├── app/            # Next.js App Router (Pages & Layouts)
+├── components/      # Reusable UI components
+├── hooks/          # Custom React hooks
+├── lib/            # External library configurations (Axios, React Query)
+├── providers/       # React Context providers
+├── store/          # State management stores
+├── types/          # TypeScript interfaces and types
+└── validations/     # Zod schemas for form validation
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Live Link
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Check out the live application here: **[LivyStay Website](https://livystay-website.vercel.app/)**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📄 License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is private and proprietary.
