@@ -5,7 +5,7 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
-![LivyStay Banner](./public/images/readme-banner.png)
+![LivyStay Banner](./public/images/readme-img.png)
 
 LivyStay is a modern, responsive property booking platform built for a seamless user experience. Whether you're looking for a cozy apartment or a luxury villa, LivyStay connects you with your next destination.
 
@@ -45,18 +45,21 @@ LivyStay is a modern, responsive property booking platform built for a seamless 
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/your-username/livystay.git
    cd livy-app
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Set up Environment Variables**
    Create a `.env.local` file in the root directory and add your API base URL:
+
    ```env
    NEXT_PUBLIC_API_BASE_URL=https://your-api-endpoint.com/api
    ```
