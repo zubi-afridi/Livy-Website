@@ -4,7 +4,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.2-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
-[![TanStack Query](https://img.shields.io/badge/TanStack_Query-5-FF4154?style=for-the-badge&logo=react-query)](https://tanstack.com/query/latest)
+[![TanStack Query](https://img.shields.io/badge/TanStack_Query-5.9-FF4154?style=for-the-badge&logo=react-query)](https://tanstack.com/query/latest)
 [![Axios](https://img.shields.io/badge/Axios-1.13.6-5A29E4?style=for-the-badge&logo=axios)](https://axios-http.com/)
 
 ![LivyStay Banner](./public/images/readme-img.png)
