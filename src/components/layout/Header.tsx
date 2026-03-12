@@ -13,7 +13,13 @@ import {
   ProfileIcon,
 } from "../common/SVGIcons";
 import NotificationsModal from "../common/NotificationsModal";
-import { clearAllAuthData } from "@/store/authStore";
+import {
+  clearAllAuthData,
+  getCurrentUser,
+  getAuthChangedEventName,
+  type StoredUser,
+} from "@/store/authStore";
+import Avatar from "@/components/common/Avatar";
 
 type Lang = {
   label: string;
@@ -34,6 +40,7 @@ const Header = () => {
     icon: "/icons/Americal-flag.svg",
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState<StoredUser | null>(null);
   const langRef = useRef<HTMLLIElement>(null);
   const menuRef = useRef<HTMLLIElement>(null);
   const mobileLangRef = useRef<HTMLDivElement>(null);
@@ -44,15 +51,21 @@ const Header = () => {
           ? localStorage.getItem("livy_isLoggedIn")
           : null;
       setIsLoggedIn(v === "1");
+      setCurrentUser(getCurrentUser());
     };
     readAuth();
     const onStorage = (e: StorageEvent) => {
-      if (e.key === "livy_isLoggedIn") {
-        setIsLoggedIn(e.newValue === "1");
+      if (e.key === "livy_isLoggedIn" || e.key === "livy_current_user") {
+        readAuth();
       }
     };
     window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
+    const evtName = getAuthChangedEventName();
+    window.addEventListener(evtName, readAuth);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(evtName, readAuth);
+    };
   }, []);
 
   useEffect(() => {
@@ -334,15 +347,17 @@ const Header = () => {
                     href="/profile/personal-information"
                     className="cursor-pointer"
                   >
-                    <Image
-                      src="/icons/profile.svg"
-                      alt="User Profile"
-                      width={44}
-                      height={44}
+                    <Avatar
+                      name={currentUser?.fullName}
+                      src={currentUser?.avatarUrl ?? null}
+                      size={40}
                       className="
-                        h-9 w-9 md:h-11 md:w-11 cursor-pointer select-none
+                        h-7! w-7! sm:h-8! sm:w-8! md:h-10! md:w-10!
+                        rounded-full shadow-sm object-cover object-center
+                        cursor-pointer select-none
                         transition-transform duration-200
                         hover:scale-[1.04] active:scale-[0.96]
+                        text-sm
                       "
                     />
                   </Link>

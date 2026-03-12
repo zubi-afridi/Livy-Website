@@ -3,18 +3,29 @@
 import { useState } from "react";
 import OpenEye from "@/assets/icons/open-eye.svg";
 import ClosedEye from "@/assets/icons/closed-eye.svg";
-import DeleteAccountModal from "@/components/common/DeleteAccountModal";
 import Link from "next/link";
 import { RiArrowLeftLine } from "@remixicon/react";
+import DeleteAccountModal from "@/components/common/DeleteAccountModal";
+import { useRouter } from "next/navigation";
+import { getCurrentUser, deleteUser, clearAllAuthData } from "@/store/authStore";
+import toast from "react-hot-toast";
+
 export default function LoginPrivacyPage() {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const router = useRouter();
 
   const handleDeleteAccount = () => {
-    console.log("Account deleted");
+    const user = getCurrentUser();
+    if (user && user.id) {
+      deleteUser(user.id);
+    }
+    clearAllAuthData();
     setIsDeleteModalOpen(false);
+    toast.success("Your account is successfully deleted");
+    router.push("/");
   };
 
   return (
@@ -57,9 +68,9 @@ export default function LoginPrivacyPage() {
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-primary-grey/50 hover:text-primary-grey transition-colors cursor-pointer"
               >
                 {showCurrentPassword ? (
-                  <ClosedEye className="size-5" />
-                ) : (
                   <OpenEye className="size-5" />
+                ) : (
+                  <ClosedEye className="size-5" />
                 )}
               </button>
             </div>
@@ -85,9 +96,9 @@ export default function LoginPrivacyPage() {
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-primary-grey/50 hover:text-primary-grey transition-colors cursor-pointer"
               >
                 {showNewPassword ? (
-                  <ClosedEye className="size-5" />
-                ) : (
                   <OpenEye className="size-5" />
+                ) : (
+                  <ClosedEye className="size-5" />
                 )}
               </button>
             </div>
@@ -113,9 +124,9 @@ export default function LoginPrivacyPage() {
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-primary-grey/50 hover:text-primary-grey transition-colors cursor-pointer"
               >
                 {showConfirmPassword ? (
-                  <ClosedEye className="size-5" />
-                ) : (
                   <OpenEye className="size-5" />
+                ) : (
+                  <ClosedEye className="size-5" />
                 )}
               </button>
             </div>

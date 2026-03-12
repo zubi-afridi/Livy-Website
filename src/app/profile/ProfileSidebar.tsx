@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useRef } from "react";
 import {
   UserIcon,
   LockIcon,
@@ -10,8 +13,15 @@ import {
   ArrowRightIcon,
   LogoutIcon,
 } from "@/components/common/SVGIcons";
-import Image from "next/image";
 import { RiPencilFill } from "@remixicon/react";
+import {
+  clearAllAuthData,
+  setCurrentUser,
+  upsertUser,
+} from "@/store/authStore";
+import { useAuth } from "@/hooks/auth/useAuth";
+import Avatar from "@/components/common/Avatar";
+import toast from "react-hot-toast";
 
 const menuItems = [
   {
@@ -55,9 +65,47 @@ const menuItems = [
 export default function ProfileSidebar() {
   const pathname = usePathname();
   const router = useRouter();
+  const { currentUser } = useAuth();
+  const fileRef = useRef<HTMLInputElement | null>(null);
 
   const handleLogout = () => {
+    clearAllAuthData();
     router.push("/");
+  };
+
+  const handlePickAvatar = () => {
+    fileRef.current?.click();
+  };
+
+  const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] ?? null;
+    e.target.value = "";
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please select an image file only.");
+      return;
+    }
+    if (!currentUser) {
+      toast.error("Please log in first.");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = typeof reader.result === "string" ? reader.result : null;
+      if (!result) {
+        toast.error("Failed to read image. Please try again.");
+        return;
+      }
+      const updated = { ...currentUser, avatarUrl: result };
+      upsertUser(updated);
+      setCurrentUser(updated);
+      toast.success("Profile photo updated.");
+    };
+    reader.onerror = () => {
+      toast.error("Failed to read image. Please try again.");
+    };
+    reader.readAsDataURL(file);
   };
 
   return (
@@ -97,23 +145,34 @@ export default function ProfileSidebar() {
 
         <div className="bg-white border border-eb-strokes rounded-2xl p-4 shadow-sm flex items-center gap-4 mb-8">
           <div className="relative shrink-0">
-            <Image
-              src="/images/profile.png"
-              alt="Alex Costa"
-              width={80}
-              height={80}
-              className="w-16 h-16 rounded-xl object-cover border-2 border-[#2c2c2e]"
+            <Avatar
+              name={currentUser?.fullName}
+              src={currentUser?.avatarUrl ?? null}
+              size={64}
+              className="w-16 h-16 rounded-xl object-cover border-2 border-[#2c2c2e] text-2xl"
             />
-            <div className="absolute -top-1.5 -right-1.5 size-5 bg-primary-grey rounded-full flex items-center justify-center cursor-pointer shadow-md">
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarChange}
+              className="hidden"
+            />
+            <button
+              type="button"
+              onClick={handlePickAvatar}
+              className="absolute -top-1.5 -right-1.5 size-5 bg-primary-grey rounded-full flex items-center justify-center cursor-pointer shadow-md"
+              aria-label="Change profile photo"
+            >
               <RiPencilFill className="size-3 text-white" />
-            </div>
+            </button>
           </div>
           <div className="flex flex-col gap-1">
             <h3 className="font-manrope font-semibold text-base text-primary-grey leading-none">
-              Alex Costa
+              {currentUser?.fullName ?? "User"}
             </h3>
             <p className="font-inter text-xs font-normal text-secondary-text leading-3">
-              abc123@gmail.com
+              {currentUser?.email ?? ""}
             </p>
           </div>
         </div>

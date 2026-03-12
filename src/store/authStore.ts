@@ -3,6 +3,12 @@ const CURRENT_USER_KEY = "livy_current_user";
 const TOKEN_KEY = "livy_token";
 const IS_LOGGED_IN_KEY = "livy_isLoggedIn";
 const OTP_FLOW_KEY = "livy_otp_flow";
+const AUTH_CHANGED_EVENT = "livy_auth_changed";
+
+const broadcastAuthChanged = () => {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event(AUTH_CHANGED_EVENT));
+};
 
 export interface StoredUser {
   id: string;
@@ -10,6 +16,7 @@ export interface StoredUser {
   email: string;
   phone: string;
   password: string; // stored for demo/practice purposes only
+  avatarUrl?: string;
 }
 
 export type OtpFlowType = "signup" | "forgotPassword";
@@ -35,6 +42,16 @@ export const saveUser = (user: StoredUser): void => {
   localStorage.setItem(USERS_KEY, JSON.stringify(users));
 };
 
+export const upsertUser = (user: StoredUser): void => {
+  const users = getAllUsers();
+  const idx = users.findIndex((u) => u.id === user.id);
+  const next = [...users];
+  if (idx === -1) next.push(user);
+  else next[idx] = user;
+  localStorage.setItem(USERS_KEY, JSON.stringify(next));
+  broadcastAuthChanged();
+};
+
 export const findUserByEmail = (email: string): StoredUser | undefined => {
   return getAllUsers().find(
     (u) => u.email.toLowerCase() === email.toLowerCase(),
@@ -55,6 +72,12 @@ export const updateUserPassword = (
   return true;
 };
 
+export const deleteUser = (id: string): void => {
+  const users = getAllUsers();
+  const filtered = users.filter((u) => u.id !== id);
+  localStorage.setItem(USERS_KEY, JSON.stringify(filtered));
+};
+
 export const getCurrentUser = (): StoredUser | null => {
   if (typeof window === "undefined") return null;
   try {
@@ -67,10 +90,12 @@ export const getCurrentUser = (): StoredUser | null => {
 
 export const setCurrentUser = (user: StoredUser): void => {
   localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+  broadcastAuthChanged();
 };
 
 export const removeCurrentUser = (): void => {
   localStorage.removeItem(CURRENT_USER_KEY);
+  broadcastAuthChanged();
 };
 
 export const getToken = (): string | null => {
@@ -97,6 +122,7 @@ export const clearAuthCookie = (): void => {
 
 export const setIsLoggedIn = (value: boolean): void => {
   localStorage.setItem(IS_LOGGED_IN_KEY, value ? "1" : "0");
+  broadcastAuthChanged();
 };
 
 export const getIsLoggedIn = (): boolean => {
@@ -132,4 +158,7 @@ export const clearAllAuthData = (): void => {
   localStorage.removeItem(OTP_FLOW_KEY);
   clearAuthCookie();
   document.cookie = "livy_otp_flow=; path=/; max-age=0; SameSite=Lax";
+  broadcastAuthChanged();
 };
+
+export const getAuthChangedEventName = () => AUTH_CHANGED_EVENT;
