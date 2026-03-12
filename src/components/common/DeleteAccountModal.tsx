@@ -36,7 +36,7 @@ const DeleteAccountModal = ({
         onClick={onClose}
       />
 
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-125 max-h-[90dvh] bg-white z-70 rounded-[20px] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 flex flex-col">
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] md:w-[95%] max-w-125 max-h-[90dvh] bg-white z-70 rounded-[20px] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 flex flex-col">
         <div className="shrink-0 flex items-center justify-between px-5 md:px-6 py-3 md:py-3 border-b border-[#F2F2F2]">
           <h2 className="text-[18px] md:text-[24px] font-semibold font-manrope text-[#262626]">
             Delete your account
@@ -79,15 +79,17 @@ const DeleteAccountModal = ({
           <div className="flex flex-row gap-2 md:gap-3 w-full mt-auto justify-center items-center">
             <button
               onClick={onClose}
-              className="md:flex-1 px-2 py-1.5 min-[400px]:py-2 md:py-4 border border-primary rounded-md md:rounded-lg text-primary font-semibold font-inter leading-none tracking-[0] transition-colors hover:bg-[#b63e41]/5 text-[11px] min-[400px]:text-[13px] md:text-[14px] cursor-pointer active:scale-[0.98] whitespace-nowrap"
+              className="flex-1 md:flex-1 px-3 py-2.5 min-[400px]:py-3 md:py-4 border border-primary rounded-lg md:rounded-lg text-primary font-semibold font-inter leading-none tracking-[0] transition-colors hover:bg-[#b63e41]/5 text-[13px] min-[400px]:text-[13px] md:text-[14px] cursor-pointer active:scale-[0.98] whitespace-nowrap"
             >
-              No, Keep My Account
+              <span className="md:hidden">Cancel</span>
+              <span className="hidden md:inline">No, Keep My Account</span>
             </button>
             <button
               onClick={onConfirm}
-              className=" md:flex-1 px-2 py-1.5 min-[400px]:py-2 md:py-4 bg-primary border border-primary rounded-md md:rounded-lg text-white font-semibold font-inter leading-none tracking-[0] transition-colors hover:bg-primary/90 text-[11px] min-[400px]:text-[13px] md:text-[14px] cursor-pointer active:scale-[0.98] whitespace-nowrap"
+              className="flex-1 md:flex-1 px-3 py-2.5 min-[400px]:py-3 md:py-4 bg-primary border border-primary rounded-lg md:rounded-lg text-white font-semibold font-inter leading-none tracking-[0] transition-colors hover:bg-primary/90 text-[13px] min-[400px]:text-[13px] md:text-[14px] cursor-pointer active:scale-[0.98] whitespace-nowrap"
             >
-              Yes, Delete My Account
+              <span className="md:hidden">Yes, Delete</span>
+              <span className="hidden md:inline">Yes, Delete My Account</span>
             </button>
           </div>
         </div>
