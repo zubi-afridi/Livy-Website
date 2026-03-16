@@ -1,14 +1,27 @@
 import { z } from "zod";
 
+const PASSWORD_RULES_MESSAGE =
+  "Password must be at least 8 characters including capital, small letter, special character and number";
+
+const passwordRule = z
+  .string()
+  .min(1, "Password is required")
+  .refine(
+    (val) =>
+      val.length >= 8 &&
+      /[A-Z]/.test(val) &&
+      /[a-z]/.test(val) &&
+      /[0-9]/.test(val) &&
+      /[^A-Za-z0-9]/.test(val),
+    { message: PASSWORD_RULES_MESSAGE },
+  );
+
 export const loginSchema = z.object({
   email: z
     .string()
     .min(1, "Email is required")
     .email("Please enter a valid email address"),
-  password: z
-    .string()
-    .min(1, "Password is required")
-    .min(6, "Password must be at least 6 characters"),
+  password: passwordRule,
   rememberMe: z.boolean().optional(),
 });
 
@@ -27,13 +40,7 @@ export const signupSchema = z.object({
     .string()
     .min(1, "Phone number is required")
     .min(10, "Phone number must be at least 10 digits long"),
-  password: z
-    .string()
-    .min(1, "Password is required")
-    .min(8, "Password must be at least 8 characters")
-    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-    .regex(/[0-9]/, "Password must contain at least one number"),
+  password: passwordRule,
 });
 
 export type SignupFormValues = z.infer<typeof signupSchema>;
@@ -58,13 +65,7 @@ export type VerifyOtpFormValues = z.infer<typeof verifyOtpSchema>;
 
 export const resetPasswordSchema = z
   .object({
-    newPassword: z
-      .string()
-      .min(1, "New password is required")
-      .min(8, "Password must be at least 8 characters")
-      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-      .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-      .regex(/[0-9]/, "Password must contain at least one number"),
+    newPassword: passwordRule,
     confirmPassword: z.string().min(1, "Please confirm your password"),
   })
   .refine((data) => data.newPassword === data.confirmPassword, {
@@ -73,3 +74,20 @@ export const resetPasswordSchema = z
   });
 
 export type ResetPasswordFormValues = z.infer<typeof resetPasswordSchema>;
+
+export const changePasswordSchema = z
+  .object({
+    currentPassword: z.string().min(1, "Current password is required"),
+    newPassword: passwordRule,
+    confirmNewPassword: z.string().min(1, "Please confirm your new password"),
+  })
+  .refine((data) => data.newPassword === data.confirmNewPassword, {
+    message: "Passwords do not match",
+    path: ["confirmNewPassword"],
+  })
+  .refine((data) => data.currentPassword !== data.newPassword, {
+    message: "New password must be different from current password",
+    path: ["newPassword"],
+  });
+
+export type ChangePasswordFormValues = z.infer<typeof changePasswordSchema>;

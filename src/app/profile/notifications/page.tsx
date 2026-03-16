@@ -91,8 +91,8 @@ export default function NotificationsPage() {
               <button
                 onClick={() => handleToggle(setting.id)}
                 className={`
-                  relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none
-                  ${toggles[setting.id] ? "bg-primary shadow-sm" : "bg-eb-strokes"}
+                  relative inline-flex h-9 w-16 shrink-0 cursor-pointer rounded-full p-1 transition-colors duration-200 ease-in-out focus:outline-none
+                  ${toggles[setting.id] ? "bg-primary" : "bg-eb-strokes"}
                 `}
                 role="switch"
                 aria-checked={toggles[setting.id]}
@@ -100,8 +100,8 @@ export default function NotificationsPage() {
                 <span
                   aria-hidden="true"
                   className={`
-                    pointer-events-none inline-block size-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out
-                    ${toggles[setting.id] ? "translate-x-5" : "translate-x-0"}
+                    pointer-events-none inline-block h-7 w-7 transform rounded-full bg-white shadow-sm transition duration-200 ease-in-out
+                    ${toggles[setting.id] ? "translate-x-7" : "translate-x-0"}
                   `}
                 />
               </button>

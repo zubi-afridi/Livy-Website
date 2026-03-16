@@ -172,7 +172,7 @@ const Header = () => {
     { label: "Bookings", href: "/bookings", Icon: BookingsIcon },
     {
       label: "Profile",
-      href: "/profile/personal-information",
+      href: "/profile",
       Icon: ProfileIcon,
     },
   ];
@@ -357,7 +357,7 @@ const Header = () => {
                         cursor-pointer select-none
                         transition-transform duration-200
                         hover:scale-[1.04] active:scale-[0.96]
-                        text-sm
+                        text-base font-semibold md:text-lg
                       "
                     />
                   </Link>

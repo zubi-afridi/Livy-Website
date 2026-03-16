@@ -122,7 +122,7 @@ export default function ProfileSidebar() {
                 href={item.href}
                 className={`
                   w-full flex items-center gap-3 px-4 py-3 rounded-xl
-                  font-manrope font-medium text-sm transition-all duration-200 cursor-pointer
+                  font-manrope font-medium text-base transition-all duration-200 cursor-pointer
                   ${
                     isActive
                       ? "bg-gray-100 text-primary-grey"
