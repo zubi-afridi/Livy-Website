@@ -661,7 +661,7 @@ const Header = () => {
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2
                   ${
                     isActive
-                      ? "text-[#B63E41] bg-pink-50/40"
+                      ? "text-[#B63E41]"
                       : "text-[#B6B6B6] hover:text-[#B63E41] hover:bg-pink-50 active:bg-pink-100/60"
                   }
                 `}
