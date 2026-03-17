@@ -66,25 +66,35 @@ const AboutLivy: React.FC = () => {
             >
               <video
                 ref={videoRef}
-                src="https://cdn.pixabay.com/video/2024/02/16/200817-913891901_large.mp4"
+                src="/videos/about-video.mp4"
                 muted
+                loop
                 playsInline
                 className="h-full w-full object-cover hidden md:block"
               />
 
               <button
                 onClick={togglePlay}
-                className="absolute inset-0 items-center justify-center  hover:bg-black/40 transition-all duration-300 hidden md:flex "
+                className="absolute inset-0 items-center justify-center transition-all duration-300 hidden md:flex group cursor-pointer"
                 aria-label={isPlaying ? "Pause video" : "Play video"}
               >
-                {!isPlaying && (
+                {!isPlaying ? (
                   <Image
                     src="/icons/play-icon.svg"
                     alt="Play"
-                    width={40}
-                    height={40}
+                    width={50}
+                    height={50}
                     priority
                     className="cursor-pointer"
+                  />
+                ) : (
+                  <Image
+                    src="/icons/pause-icon.svg"
+                    alt="Pause"
+                    width={50}
+                    height={50}
+                    priority
+                    className="cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   />
                 )}
               </button>

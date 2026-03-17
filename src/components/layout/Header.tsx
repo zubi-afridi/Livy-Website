@@ -662,7 +662,7 @@ const Header = () => {
                   ${
                     isActive
                       ? "text-[#B63E41]"
-                      : "text-[#B6B6B6] hover:text-[#B63E41] hover:bg-pink-50 active:bg-pink-100/60"
+                      : "text-[#B6B6B6] hover:text-[#B63E41]"
                   }
                 `}
               >

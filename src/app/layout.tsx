@@ -18,7 +18,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Livy - Living Made Easy",
+  title: "Livy - Vacations Rental",
   description: "Find your perfect stay with Livy.",
 };
 

@@ -130,3 +130,22 @@ body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
   border-radius: 8px !important;
   border: 1px solid var(--eb-strokes) !important;
 }
+
+/* globals.css */
+
+.custom-checkbox {
+  @apply h-5 w-5 appearance-none rounded border-[1.5px] border-primary cursor-pointer relative;
+}
+
+.custom-checkbox:checked {
+  @apply bg-primary border-primary;
+}
+
+.custom-checkbox::after {
+  content: "";
+  @apply absolute left-1.5 bottom-1 w-1.5 h-3 border-white border-b-2 border-r-2 rotate-45 hidden;
+}
+
+.custom-checkbox:checked::after {
+  @apply block;
+}

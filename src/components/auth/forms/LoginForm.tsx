@@ -99,10 +99,10 @@ export default function LoginForm() {
           className="flex items-center gap-3 text-[14px] text-secondary-text cursor-pointer"
         >
           <input
-            id="remember"
             type="checkbox"
+            id="remember"
             {...register("rememberMe")}
-            className="h-4 w-4 rounded accent-primary cursor-pointer"
+            className="custom-checkbox"
           />
           Remember me
         </label>
