@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="hidden sm:block border-t border-gray-200 mt-12 py-5">
+    <footer className="hidden md:block border-t border-gray-200 mt-12 py-5">
       <Container className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
         <p className="font-inter text-base font-medium text-footer-text">
           © {currentYear} Livy — Modern Stays, Seamless Access.

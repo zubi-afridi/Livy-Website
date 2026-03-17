@@ -7,7 +7,7 @@ export default function LoginPage() {
     <>
       <AuthShell>
         <AuthCard
-          title="Welcome"
+          title="Welcome Back"
           subtitle="Login to access your bookings, trip details, and smart-lock check-in."
         >
           <LoginForm />

@@ -26,7 +26,7 @@ const socialIcons = [Instagram, Facebook, Twitter, Linkedin, Youtube];
 
 const FooterLanding = () => {
   return (
-    <div className="hidden sm:block bg-[#fafafa]">
+    <div className="hidden md:block bg-[#fafafa]">
       <Container>
         <div className="pt-0 md:pt-5 mt-10 text-[#4a4a4a] font-sans">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-0">

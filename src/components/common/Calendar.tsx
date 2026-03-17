@@ -117,7 +117,7 @@ export function DateRangeCalendar({
             type="button"
             onClick={() => isMobile && setShowPicker(true)}
             className={[
-              "font-inter text-[20px] font-medium leading-6.5 tracking-[0px] text-gray-900 w-full text-center",
+              "font-inter text-base sm:text-[20px] font-medium leading-tight sm:leading-6.5 tracking-[0px] text-gray-900 w-full text-center",
               isMobile
                 ? "hover:bg-gray-50 rounded-lg py-1 transition-colors"
                 : "",
@@ -144,7 +144,7 @@ export function DateRangeCalendar({
           {weekdays.map((w) => (
             <div
               key={w}
-              className="font-inter text-xs font-normal leading-6.5 tracking-[0.3px] text-center text-gray-500"
+              className="font-inter text-[10px] sm:text-xs font-normal leading-6.5 tracking-[0.3px] text-center text-gray-500"
             >
               {w}
             </div>
@@ -175,7 +175,7 @@ export function DateRangeCalendar({
                 disabled={disabled}
                 onClick={() => onPick(d)}
                 className={[
-                  "h-10 w-10 font-inter text-sm font-semibold leading-6.5 tracking-[0.3px] text-center transition flex items-center justify-center mx-auto",
+                  "h-8 w-8 sm:h-10 sm:w-10 font-inter text-xs sm:text-sm font-semibold leading-6.5 tracking-[0.3px] text-center transition flex items-center justify-center mx-auto",
                   disabled
                     ? "cursor-not-allowed text-gray-300"
                     : "hover:bg-gray-100 text-gray-800",
@@ -293,12 +293,14 @@ export function DateRangeCalendar({
   }
 
   return (
-    <div className="w-full lg:max-w-4xl rounded-3xl bg-white p-6 md:p-8 shadow-xl border border-gray-100">
-      <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start justify-center">
-        <div className="min-w-75 flex-1">
+    <div className="w-full lg:max-w-4xl rounded-3xl bg-white p-4 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 mx-auto overflow-hidden">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 items-start justify-center">
+        <div className="w-full lg:min-w-75 flex-1">
           {renderMonth(m1, canGoPrev, false)}
         </div>
-        <div className="min-w-75 flex-1">{renderMonth(m2, false, true)}</div>
+        <div className="w-full lg:min-w-75 flex-1">
+          {renderMonth(m2, false, true)}
+        </div>
       </div>
     </div>
   );

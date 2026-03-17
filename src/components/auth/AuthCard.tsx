@@ -9,7 +9,7 @@ export default function AuthCard({
 }) {
   return (
     <div
-      className="w-full rounded-xl border-none sm:border sm:border-eb-strokes bg-white sm:shadow-sm sm:shadow-[#EBEBEB] p-3 sm:p-6 md:p-7"
+      className="w-full rounded-xl border-none sm:border-2 sm:border-eb-strokes bg-white sm:shadow-[0_4px_40px_0_#EBEBEB] p-3 sm:p-6 md:p-7"
       data-aos="fade-up"
       data-aos-duration="800"
     >

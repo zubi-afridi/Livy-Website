@@ -21,15 +21,13 @@ const PropertyCalendar: React.FC<PropertyCalendarProps> = ({
       <h2 className="text-xl font-bold text-gray-900 mb-6 font-manrope">
         Check-in Check-out
       </h2>
-      <div className="bg-[#f9fafb] p-4 md:p-8 rounded-2xl overflow-hidden">
-        <DateRangeCalendar
-          anchorMonth={anchorMonth}
-          onPrev={onPrev}
-          onNext={onNext}
-          range={range}
-          onPick={onPick}
-        />
-      </div>
+      <DateRangeCalendar
+        anchorMonth={anchorMonth}
+        onPrev={onPrev}
+        onNext={onNext}
+        range={range}
+        onPick={onPick}
+      />
     </div>
   );
 };

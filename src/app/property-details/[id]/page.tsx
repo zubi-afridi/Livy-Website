@@ -149,7 +149,7 @@ const PropertyDetailsPage = ({
       <div className="min-h-screen bg-white font-manrope">
         <div>
           <Container>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
               {/* Left Column: Details */}
               <div className="lg:col-span-2">
                 <PropertyHeader
