@@ -13,11 +13,11 @@ const FloatingBtn = () => {
         className="fixed md:bottom-6 bottom-22 md:right-6 right-5 z-20 cursor-pointer hover:scale-110 hover:-translate-y-2 transition-all ease-in-out duration-300 active:scale-100"
       >
         <Image
-          src={"/images/Floating button.svg"}
+          src={"/images/support.png"}
           alt="Floating Button"
           width={100}
           height={100}
-          className="size-16 sm:size-18 md:size-20 "
+          className="size-16 sm:size-18 md:size-20 shadow-primary shadow-lg rounded-full"
           priority
         />
       </div>
