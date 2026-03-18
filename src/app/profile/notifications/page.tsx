@@ -1,9 +1,7 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import { RiArrowLeftLine } from "@remixicon/react";
-
 const notificationSettings = [
   {
     id: "booking-updates",
@@ -40,7 +38,6 @@ const notificationSettings = [
       "Important system updates related to your account or app performance.",
   },
 ];
-
 export default function NotificationsPage() {
   const [toggles, setToggles] = useState<Record<string, boolean>>({
     "booking-updates": true,
@@ -50,11 +47,9 @@ export default function NotificationsPage() {
     "early-check-in-status": true,
     "service-messages": true,
   });
-
   const handleToggle = (id: string) => {
     setToggles((prev) => ({ ...prev, [id]: !prev[id] }));
   };
-
   return (
     <div>
       <div className="md:hidden flex flex-col gap-6 mb-8 mt-2">
@@ -68,11 +63,9 @@ export default function NotificationsPage() {
           Notifications
         </h2>
       </div>
-
       <h2 className="hidden md:block text-2xl font-semibold font-manrope text-primary-grey leading-none mb-6">
         Notifications
       </h2>
-
       <div className="bg-white border border-eb-strokes rounded-2xl p-4 md:p-6 mb-8">
         <div className="space-y-8">
           {notificationSettings.map((setting) => (

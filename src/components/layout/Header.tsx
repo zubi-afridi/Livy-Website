@@ -232,7 +232,7 @@ const Header = () => {
               alt="nav logo"
               width={100}
               height={100}
-              className="cursor-pointer object-contain w-25 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="cursor-pointer object-contain w-25 h-auto transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               priority
             />
           </Link>
@@ -516,7 +516,7 @@ const Header = () => {
               alt="Livy Logo"
               width={80}
               height={80}
-              className="w-24 cursor-pointer object-contain transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-24 h-auto cursor-pointer object-contain transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               priority
             />
           </Link>

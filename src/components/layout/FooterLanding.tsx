@@ -42,7 +42,7 @@ const FooterLanding = () => {
                     alt="nav logo"
                     width={100}
                     height={100}
-                    className="-ml-1 object-contain w-20 h-10"
+                    className="-ml-1 object-contain w-20 h-auto"
                     priority
                   />
                 </Link>

@@ -18,6 +18,7 @@ const FloatingBtn = () => {
           width={100}
           height={100}
           className="size-16 sm:size-18 md:size-20 "
+          priority
         />
       </div>
 

@@ -51,6 +51,7 @@ const AboutLivy: React.FC = () => {
                 alt="Luxury Bedroom"
                 priority
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover rounded-2xl"
               />
             </div>

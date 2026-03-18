@@ -25,6 +25,7 @@ const Loader = () => {
                 fill
                 className="object-contain"
                 priority
+                sizes="64px"
               />
             </div>
           </div>

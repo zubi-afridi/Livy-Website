@@ -87,6 +87,7 @@ const HeroSection = () => {
                         src={img.src}
                         alt={img.alt}
                         fill
+                        sizes="40px"
                         className="object-cover"
                       />
                     </div>
@@ -97,6 +98,7 @@ const HeroSection = () => {
                       src="/icons/plus.svg"
                       alt="plus"
                       fill
+                      sizes="40px"
                       className="object-contain"
                     />
                   </button>

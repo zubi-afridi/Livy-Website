@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import Container from "@/components/common/Container";
 import Header from "@/components/layout/Header";
@@ -7,11 +6,9 @@ import FooterLanding from "@/components/layout/FooterLanding";
 import TravelCard from "@/components/common/Cards";
 import CardSkeleton from "@/components/common/CardSkeleton";
 import FloatingBtn from "@/components/layout/FloatingBtn";
-
 const FavoritesPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts?_limit=8")
       .then((res) => res.json())
@@ -20,12 +17,10 @@ const FavoritesPage = () => {
         setLoading(false);
       });
   }, []);
-
   return (
     <div className="min-h-screen bg-white">
       <FloatingBtn />
       <Header />
-
       <main className="pt-20 md:pt-28 pb-20">
         <Container>
           <div className="mb-8 md:mb-12">
@@ -37,7 +32,6 @@ const FavoritesPage = () => {
               Favorites
             </h1>
           </div>
-
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
               {[...Array(8)].map((_, index) => (
@@ -60,7 +54,6 @@ const FavoritesPage = () => {
                   </div>
                 ))}
               </div>
-
               <div className="md:hidden space-y-6">
                 <div
                   className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-2"
@@ -84,7 +77,6 @@ const FavoritesPage = () => {
                       </div>
                     ))}
                 </div>
-
                 <div
                   className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth pb-2"
                   style={{
@@ -112,10 +104,8 @@ const FavoritesPage = () => {
           )}
         </Container>
       </main>
-
       <FooterLanding />
     </div>
   );
 };
-
 export default FavoritesPage;
