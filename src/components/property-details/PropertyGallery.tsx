@@ -7,7 +7,7 @@ const PropertyGallery = () => {
       <div className="grid grid-cols-12 gap-2 sm:gap-3 md:gap-4 h-64 sm:h-100 md:h-125 lg:h-150 relative">
         <div className="col-span-12 sm:col-span-5 relative h-full">
           <Image
-            src="/images/bedroom-1.png"
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
             alt="Property Main View"
             fill
             className="rounded-2xl sm:rounded-3xl object-cover"
@@ -17,7 +17,7 @@ const PropertyGallery = () => {
         <div className="hidden sm:flex col-span-3 flex-col gap-3 md:gap-4 h-full">
           <div className="relative flex-1">
             <Image
-              src="/images/bedroom-2.png"
+              src="https://images.unsplash.com/photo-1560185127-2ad9938814bb?auto=format&fit=crop&w=800&q=80"
               alt="Bedroom View"
               fill
               className="rounded-3xl object-cover"
@@ -25,8 +25,8 @@ const PropertyGallery = () => {
           </div>
           <div className="relative flex-1">
             <Image
-              src="/images/bedroom-2.png"
-              alt="Living Room"
+              src="https://images.unsplash.com/photo-1590608897129-79da98d15969?auto=format&fit=crop&w=800&q=80"
+              alt="Cozy Living Space"
               fill
               className="rounded-3xl object-cover"
             />
@@ -34,8 +34,8 @@ const PropertyGallery = () => {
         </div>
         <div className="hidden sm:block col-span-4 relative h-full">
           <Image
-            src="/images/bedroom-4.png"
-            alt="Window View"
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
+            alt="Interior Detail"
             fill
             className="rounded-3xl object-cover"
           />
