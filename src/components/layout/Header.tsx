@@ -232,7 +232,7 @@ const Header = () => {
               alt="nav logo"
               width={100}
               height={100}
-              className="w-20 cursor-pointer object-contain md:w-25 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="cursor-pointer object-contain w-25 transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               priority
             />
           </Link>
@@ -516,7 +516,7 @@ const Header = () => {
               alt="Livy Logo"
               width={80}
               height={80}
-              className="w-16 cursor-pointer object-contain transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+              className="w-24 cursor-pointer object-contain transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
               priority
             />
           </Link>
@@ -530,7 +530,7 @@ const Header = () => {
             <button
               onClick={() => setIsNotificationsOpen(true)}
               className="
-                flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm
+                flex size-10 items-center justify-center rounded-full bg-white shadow-sm
                 cursor-pointer select-none
                 transition-all duration-200
                 hover:bg-gray-50 hover:shadow-md
@@ -543,9 +543,9 @@ const Header = () => {
               <Image
                 src="/icons/notification.svg"
                 alt="Notifications"
-                width={18}
-                height={18}
-                className="h-4.5 w-4.5 transition-transform duration-200 hover:scale-105"
+                width={24}
+                height={24}
+                className="size-6 transition-transform duration-200 hover:scale-105"
               />
             </button>
 
@@ -556,7 +556,7 @@ const Header = () => {
                   setIsMenuOpen(false);
                 }}
                 className="
-                  flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-sm
+                  flex size-10 items-center justify-center rounded-full bg-white shadow-sm
                   cursor-pointer select-none
                   transition-all duration-200
                   hover:bg-gray-50 hover:shadow-md
@@ -569,9 +569,9 @@ const Header = () => {
                 <Image
                   src="/icons/lang.svg"
                   alt="Select Language"
-                  width={18}
-                  height={18}
-                  className="h-4.5 w-4.5"
+                  width={24}
+                  height={24}
+                  className="size-6"
                 />
               </button>
 

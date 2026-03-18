@@ -73,10 +73,32 @@ const TravelCard = ({
         <div className="mt-3 flex justify-between items-start">
           <div className="min-w-0">
             <h3 className="text-base font-medium truncate ">
-              Cozy Downtown Studio
+              {[
+                "Chic Mountain Resort",
+                "Posh Highrise Palace",
+                "Cool Lakeside Estate",
+                "Neat Terraced Condos",
+                "Calm Seashore Houses",
+                "Bold Woodland Lodges",
+                "Pure Heritage Castle",
+                "Fine Suburban Duplex",
+                "Deck Tropical Cabins",
+                "Flat Downtown Studio",
+              ][post.id % 10]}
             </h3>
             <p className="text-gray-500 text-sm truncate">
-              In vibrant {post.body.split(" ")[0]}, Brazil
+              {[
+                "In amazing RJ, Brazil",
+                "At awesome SP, Brazil",
+                "By radiant SC, Brazil",
+                "To stylish MG, Brazil",
+                "On classic BA, Brazil",
+                "Of natural CE, Brazil",
+                "As popular PE, Brazil",
+                "In coastal RN, Brazil",
+                "At premium RS, Brazil",
+                "By ancient AM, Brazil",
+              ][post.id % 10]}
             </p>
             <div className="mt-1">
               <span className="font-medium text-lg  md:text-[20px] lg:text-[24px]">
