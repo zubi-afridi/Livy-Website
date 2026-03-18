@@ -154,9 +154,9 @@ export default function PropertyCards({
               <div className="flex justify-between items-center mb-6">
                 <div className="h-5 w-48 bg-gray-200 rounded-md animate-shimmer" />
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-hidden scrollbar-hide">
+              <div className="flex md:grid gap-4 md:gap-6 overflow-hidden md:overflow-visible pb-4 md:pb-0 md:grid-cols-3 lg:grid-cols-4">
                 {[...Array(4)].map((_, cardIndex) => (
-                  <div key={cardIndex} className="w-full">
+                  <div key={cardIndex} className="flex-none">
                     <CardSkeleton />
                   </div>
                 ))}
