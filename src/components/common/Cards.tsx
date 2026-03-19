@@ -1,5 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Heart, Star } from "lucide-react";
+import toast from "react-hot-toast";
+import {
+  addFavoriteForUser,
+  getFavoritesChangedEventName,
+  isFavoriteForUser,
+  removeFavoriteForUser,
+} from "@/store/favoritesStore";
+import {
+  getAuthChangedEventName,
+  getCurrentUser,
+  getIsLoggedIn,
+} from "@/store/authStore";
 
 export interface Post {
   id: number;
@@ -17,6 +29,32 @@ const TravelCard = ({
   isFavorited?: boolean;
 }) => {
   const [liked, setLiked] = useState(isFavorited);
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    const syncFavoriteState = () => {
+      const loggedIn = getIsLoggedIn();
+      const user = getCurrentUser();
+      if (!loggedIn || !user) {
+        setLiked(isFavorited);
+        return;
+      }
+      setLiked(isFavoriteForUser(user.id, post.id));
+    };
+
+    syncFavoriteState();
+    setHydrated(true);
+
+    const favoritesEvent = getFavoritesChangedEventName();
+    const authEvent = getAuthChangedEventName();
+    window.addEventListener(favoritesEvent, syncFavoriteState);
+    window.addEventListener(authEvent, syncFavoriteState);
+
+    return () => {
+      window.removeEventListener(favoritesEvent, syncFavoriteState);
+      window.removeEventListener(authEvent, syncFavoriteState);
+    };
+  }, [post.id, isFavorited]);
 
   const price = Math.floor((post.id * 15) % 150) + 45;
   const rating = (4.5 + (post.id % 5) / 10).toFixed(2);
@@ -56,13 +94,43 @@ const TravelCard = ({
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              setLiked(!liked);
+              const loggedIn = getIsLoggedIn();
+              const user = getCurrentUser();
+
+              if (!loggedIn || !user) {
+                toast.error("Please log in to add items to your favorites.");
+                return;
+              }
+
+              const currentlyFavorited = isFavoriteForUser(user.id, post.id);
+              if (currentlyFavorited) {
+                const removed = removeFavoriteForUser(user.id, post.id);
+                if (removed) {
+                  setLiked(false);
+                  toast.success("Removed from favorites successfully.");
+                }
+                return;
+              }
+
+              const added = addFavoriteForUser(user.id, {
+                id: post.id,
+                title: post.title,
+                body: post.body,
+              });
+
+              if (!added) {
+                setLiked(true);
+                return;
+              }
+
+              setLiked(true);
+              toast.success("Added to favorites successfully.");
             }}
             className="absolute right-3 top-3 s cursor-pointer z-10"
           >
             <Heart
               className={`w-5 h-5 ${
-                liked
+                hydrated && liked
                   ? "fill-red-type stroke-none"
                   : " fill-black text-black stroke-1 stroke-white"
               }`}

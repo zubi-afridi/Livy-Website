@@ -94,42 +94,42 @@ const PropertyDetailsPage = ({
 
   const reviews = [
     {
-      name: "Mushtaq",
+      name: "Dakota Hayes",
       date: "1 week ago",
       comment:
         "This studio was absolutely perfect for my trip! It was clean, stylish, and had everything I needed. The location was amazing, with easy access to all the best spots in Vila Velha. I especially appreciated the comfortable bed and the well-equipped kitchen. Highly recommend!",
       avatar: "M",
     },
     {
-      name: "Aisha",
+      name: "Finley Scott",
       date: "2 weeks ago",
       comment:
         "I had a fantastic stay! The apartment was spacious and beautifully decorated. The host was very welcoming and provided great recommendations for local restaurants. Will definitely return!",
       avatar: "A",
     },
     {
-      name: "Carlos",
+      name: "Emerson Blake",
       date: "1 month ago",
       comment:
         "Great experience overall! The beach was just a short walk away, and the amenities in the apartment made my vacation so much easier. The outdoor space was a lovely bonus.",
       avatar: "C",
     },
     {
-      name: "Fatima",
+      name: "Rowan Mitchell",
       date: "3 weeks ago",
       comment:
         "This place exceeded my expectations! It was modern and very well maintained. The neighborhood felt safe and vibrant. I loved the coffee shop just around the corner.",
       avatar: "F",
     },
     {
-      name: "Jamal",
+      name: "Parker Collins",
       date: "4 weeks ago",
       comment:
         "I enjoyed my stay here. It was peaceful and perfect for relaxation. The furnishings were comfortable, and the Wi-Fi was fast, which was a plus for working remotely.",
       avatar: "J",
     },
     {
-      name: "Lina",
+      name: "Logan Carter",
       date: "5 weeks ago",
       comment:
         "Absolutely loved this spot! The view from the balcony was breathtaking, especially during sunsets. The host was attentive and made sure I had everything I needed. Would recommend to friends!",

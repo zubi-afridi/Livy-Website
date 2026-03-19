@@ -3,20 +3,40 @@ import { useEffect, useState } from "react";
 import Container from "@/components/common/Container";
 import Header from "@/components/layout/Header";
 import FooterLanding from "@/components/layout/FooterLanding";
-import TravelCard from "@/components/common/Cards";
-import CardSkeleton from "@/components/common/CardSkeleton";
+import TravelCard, { Post } from "@/components/common/Cards";
 import FloatingBtn from "@/components/layout/FloatingBtn";
+import { getAuthChangedEventName, getCurrentUser } from "@/store/authStore";
+import {
+  getFavoritesByUser,
+  getFavoritesChangedEventName,
+} from "@/store/favoritesStore";
+
 const FavoritesPage = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState<Post[]>([]);
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts?_limit=8")
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json);
-        setLoading(false);
-      });
+    const loadFavorites = () => {
+      const user = getCurrentUser();
+      if (!user) {
+        setFavorites([]);
+        return;
+      }
+      setFavorites(getFavoritesByUser(user.id) as Post[]);
+    };
+
+    loadFavorites();
+
+    const favoritesEvent = getFavoritesChangedEventName();
+    const authEvent = getAuthChangedEventName();
+    window.addEventListener(favoritesEvent, loadFavorites);
+    window.addEventListener(authEvent, loadFavorites);
+
+    return () => {
+      window.removeEventListener(favoritesEvent, loadFavorites);
+      window.removeEventListener(authEvent, loadFavorites);
+    };
   }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <FloatingBtn />
@@ -32,18 +52,19 @@ const FavoritesPage = () => {
               Favorites
             </h1>
           </div>
-          {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-              {[...Array(8)].map((_, index) => (
-                <div key={index}>
-                  <CardSkeleton />
-                </div>
-              ))}
+          {favorites.length === 0 ? (
+            <div className="rounded-2xl border border-gray-200 bg-gray-50 p-8 md:p-12 text-center">
+              <h2 className="text-lg md:text-2xl font-semibold text-primary-grey">
+                No favorites found. Start adding items you love.
+              </h2>
+              <p className="mt-2 text-sm md:text-base text-gray-500">
+                Tap the heart icon on any property card to save it here.
+              </p>
             </div>
           ) : (
             <>
               <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                {data.map((post: any, index: number) => (
+                {favorites.map((post: Post, index: number) => (
                   <div
                     key={post.id}
                     data-aos="fade-up"
@@ -63,9 +84,9 @@ const FavoritesPage = () => {
                     WebkitOverflowScrolling: "touch",
                   }}
                 >
-                  {data
-                    .slice(0, Math.ceil(data.length / 2))
-                    .map((post: any, index: number) => (
+                  {favorites
+                    .slice(0, Math.ceil(favorites.length / 2))
+                    .map((post: Post, index: number) => (
                       <div
                         key={post.id}
                         className="flex-none w-65"
@@ -85,9 +106,9 @@ const FavoritesPage = () => {
                     WebkitOverflowScrolling: "touch",
                   }}
                 >
-                  {data
-                    .slice(Math.ceil(data.length / 2))
-                    .map((post: any, index: number) => (
+                  {favorites
+                    .slice(Math.ceil(favorites.length / 2))
+                    .map((post: Post, index: number) => (
                       <div
                         key={post.id}
                         className="flex-none w-65"

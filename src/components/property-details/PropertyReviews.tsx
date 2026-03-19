@@ -13,6 +13,22 @@ interface PropertyReviewsProps {
 }
 
 const PropertyReviews: React.FC<PropertyReviewsProps> = ({ reviews }) => {
+  const getNameHash = (name: string): number => {
+    return name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  };
+
+  const getAvatarUrl = (name: string) => {
+    const hash = getNameHash(name);
+    const genderFolder = hash % 2 === 0 ? "men" : "women";
+    const imageIndex = (hash % 90) + 1; // randomuser has 0-99; keep in reliable visible range
+    return `https://randomuser.me/api/portraits/${genderFolder}/${imageIndex}.jpg`;
+  };
+
+  const getFallbackAvatarUrl = (name: string) =>
+    `https://ui-avatars.com/api/?name=${encodeURIComponent(
+      name,
+    )}&background=111827&color=ffffff&size=128&format=png&bold=true`;
+
   return (
     <div className="mt-20 pt-20 border-t border-gray-100">
       <h2 className="text-2xl font-bold text-gray-900 mb-8 font-manrope">
@@ -24,9 +40,16 @@ const PropertyReviews: React.FC<PropertyReviewsProps> = ({ reviews }) => {
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-600 shadow-sm border border-gray-200 overflow-hidden">
                 <img
-                  src={`https://i.pravatar.cc/150?u=${rev.name}`}
+                  src={getAvatarUrl(rev.name)}
                   alt={rev.name}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    target.onerror = null;
+                    target.src = getFallbackAvatarUrl(rev.name || "Guest");
+                  }}
                 />
               </div>
               <div>
