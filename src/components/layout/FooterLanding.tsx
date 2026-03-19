@@ -51,12 +51,12 @@ const FooterLanding = () => {
                 Smart vacation rentals made simple. Book faster, unlock
                 instantly, and enjoy seamless stays with keyless access.
               </p>
-              <a
+              <Link
                 href="/"
                 className="text-[16px] font-medium block mb-6 font-inter"
               >
                 support@livy.com
-              </a>
+              </Link>
 
               <div className="flex space-x-4">
                 {socialIcons.map((Icon, idx) => (

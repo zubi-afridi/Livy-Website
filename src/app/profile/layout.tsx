@@ -4,7 +4,6 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Container from "@/components/common/Container";
-import FloatingBtn from "@/components/layout/FloatingBtn";
 import ProfileSidebar from "./ProfileSidebar";
 import FooterLanding from "@/components/layout/FooterLanding";
 import { RiArrowLeftSLine } from "@remixicon/react";
@@ -19,7 +18,6 @@ export default function ProfileLayout({
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <FloatingBtn />
       <Header />
 
       <div className="h-16 md:h-0 mt-0 md:mt-14"></div>

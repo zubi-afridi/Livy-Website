@@ -1,4 +1,3 @@
-import FloatingBtn from "@/components/layout/FloatingBtn";
 import Footer from "@/components/layout/FooterLanding";
 
 import Header from "@/components/layout/Header";
@@ -10,7 +9,6 @@ import PropertyCards from "@/components/sections/PropertyCards";
 const page = () => {
   return (
     <>
-      <FloatingBtn />
       <Header />
       <div className="pt-30">
         <TravelSearchBar showFilters={true} />

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Container from "@/components/common/Container";
 import FooterLanding from "@/components/layout/FooterLanding";
-import FloatingBtn from "@/components/layout/FloatingBtn";
 import { Booking } from "@/components/bookings/types";
 import BookingTabs from "@/components/bookings/BookingTabs";
 import BookingList from "@/components/bookings/BookingList";
@@ -77,7 +76,6 @@ const BookingsPage = () => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <FloatingBtn />
       <Header />
 
       <div className="h-16 md:h-0 mt-0 md:mt-14"></div>

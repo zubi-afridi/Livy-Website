@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Home, MoveLeft } from "lucide-react";
-import FloatingBtn from "@/components/layout/FloatingBtn";
 
 export default function NotFound() {
   const handleGoBack = () => {
@@ -81,7 +80,6 @@ export default function NotFound() {
           </div>
         </div>
       </div>
-      <FloatingBtn />
     </div>
   );
 }

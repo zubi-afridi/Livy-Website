@@ -20,6 +20,7 @@ import {
   type StoredUser,
 } from "@/store/authStore";
 import Avatar from "@/components/common/Avatar";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 type Lang = {
   label: string;
@@ -33,14 +34,9 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
-
-  const [selectedLang, setSelectedLang] = useState<Lang>({
-    label: "English",
-    code: "EN",
-    icon: "/icons/Americal-flag.svg",
-  });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState<StoredUser | null>(null);
+  const { language, setLanguage } = useLanguage();
   const langRef = useRef<HTMLLIElement>(null);
   const menuRef = useRef<HTMLLIElement>(null);
   const mobileLangRef = useRef<HTMLDivElement>(null);
@@ -114,6 +110,11 @@ const Header = () => {
       icon: "/icons/portagal-flag.svg",
     },
   ];
+
+  const selectedLang =
+    language === "pt-BR"
+      ? languages.find((lang) => lang.code === "pt-BR") ?? languages[1]
+      : languages.find((lang) => lang.code === "EN") ?? languages[0];
 
   const menuItems = isLoggedIn
     ? [
@@ -282,7 +283,7 @@ const Header = () => {
                             <button
                               type="button"
                               onClick={() => {
-                                setSelectedLang(lang);
+                                setLanguage(lang.code === "pt-BR" ? "pt-BR" : "EN");
                                 setIsLangOpen(false);
                               }}
                               className="
@@ -586,7 +587,7 @@ const Header = () => {
                           <button
                             type="button"
                             onClick={() => {
-                              setSelectedLang(lang);
+                              setLanguage(lang.code === "pt-BR" ? "pt-BR" : "EN");
                               setIsLangOpen(false);
                             }}
                             className="

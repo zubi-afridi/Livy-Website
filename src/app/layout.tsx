@@ -3,7 +3,9 @@ import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import AOSInit from "@/components/common/AOSInit";
 import QueryProvider from "@/providers/QueryProvider";
+import LanguageProvider from "@/providers/LanguageProvider";
 import { Toaster } from "react-hot-toast";
+import GlobalFloatingBtn from "@/components/layout/GlobalFloatingBtn";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,9 +35,12 @@ export default function RootLayout({
         className={`${inter.variable} ${manrope.variable} antialiased font-sans overflow-x-hidden`}
       >
         <QueryProvider>
-          <AOSInit />
-          <Toaster position="top-center" reverseOrder={false} />
-          {children}
+          <LanguageProvider>
+            <AOSInit />
+            <Toaster position="top-center" reverseOrder={false} />
+            {children}
+            <GlobalFloatingBtn />
+          </LanguageProvider>
         </QueryProvider>
       </body>
     </html>

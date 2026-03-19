@@ -11,10 +11,10 @@ const Footer = () => {
           © {currentYear} Livy — Modern Stays, Seamless Access.
         </p>
         <div className="flex space-x-8 font-bold text-secondary-text font-inter">
-          <Link href="/privacy" className="hover:text-black transition-colors">
+          <Link href="/" className="hover:text-black transition-colors">
             Privacy Policy
           </Link>
-          <Link href="/terms" className="hover:text-black transition-colors">
+          <Link href="/" className="hover:text-black transition-colors">
             Terms of Service
           </Link>
         </div>

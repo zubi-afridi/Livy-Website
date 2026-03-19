@@ -102,6 +102,18 @@ const TravelSearchBar = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (isMobileModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileModalOpen]);
+
   const handlePick = (item: {
     label: string;
     type: string;

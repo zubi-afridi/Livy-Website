@@ -4,7 +4,6 @@ import Container from "@/components/common/Container";
 import Header from "@/components/layout/Header";
 import FooterLanding from "@/components/layout/FooterLanding";
 import TravelCard, { Post } from "@/components/common/Cards";
-import FloatingBtn from "@/components/layout/FloatingBtn";
 import { getAuthChangedEventName, getCurrentUser } from "@/store/authStore";
 import {
   getFavoritesByUser,
@@ -39,7 +38,6 @@ const FavoritesPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <FloatingBtn />
       <Header />
       <main className="pt-20 md:pt-28 pb-20">
         <Container>
